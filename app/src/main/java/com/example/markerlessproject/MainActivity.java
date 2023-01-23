@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentOnAttachListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.ar.core.Anchor;
@@ -20,6 +22,7 @@ import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.ArSceneView;
 import com.google.ar.sceneform.SceneView;
 import com.google.ar.sceneform.Sceneform;
+import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.Renderable;
 import com.google.ar.sceneform.rendering.ViewRenderable;
@@ -35,10 +38,10 @@ public class MainActivity extends AppCompatActivity
 
     private ArFragment arFragment;
     private Renderable renderable;
-    private ViewRenderable viewRenderable;
     private Boolean mars = false;
     private Boolean earth = false;
 
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +55,22 @@ public class MainActivity extends AppCompatActivity
                         .commit();
             }
         }
-        mars = true;
-        loadModels();
+
+        button = findViewById(R.id.outlinedButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!mars) {
+                    mars = true;
+                    earth = false;
+                    loadModels();
+                } else {
+                    earth = true;
+                    mars = false;
+                    loadModels();
+                }
+            }
+        });
     }
 
     @Override
@@ -105,6 +122,18 @@ public class MainActivity extends AppCompatActivity
                             activity.renderable = model;
                         }
                     });
+        } else {
+            ModelRenderable.builder()
+                    .setSource(this, Uri.parse("mars.glb"))
+                    .setIsFilamentGltf(true)
+                    .setAsyncLoadEnabled(true)
+                    .build()
+                    .thenAccept(model -> {
+                        MainActivity activity = weakReference.get();
+                        if (activity != null) {
+                            activity.renderable = model;
+                        }
+                    });
         }
     }
 
@@ -115,9 +144,12 @@ public class MainActivity extends AppCompatActivity
             return;
         }
 
+        arFragment.getArSceneView().getPlaneRenderer().setShadowReceiver(false);
+
         Anchor anchor = hitResult.createAnchor();
         AnchorNode anchorNode = new AnchorNode(anchor);
         anchorNode.setParent(arFragment.getArSceneView().getScene());
+        anchorNode.setWorldScale(new Vector3(3.5f, 3.5f, 3.5f));
 
         TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
         model.setParent(anchorNode);
