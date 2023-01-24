@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.Config;
 import com.google.ar.core.HitResult;
@@ -42,6 +43,12 @@ public class MainActivity extends AppCompatActivity
     private Boolean earth = false;
 
     Button button;
+
+    Button deleteButton;
+
+    private AnchorNode anchorNode;
+    private TransformableNode model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +75,18 @@ public class MainActivity extends AppCompatActivity
                     earth = true;
                     mars = false;
                     loadModels();
+                }
+            }
+        });
+
+
+        // button delete all 3d model from scene
+        deleteButton = findViewById(R.id.deleteButton);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(renderable != null) {
+                    arFragment.getArSceneView().getScene().removeChild(model);
                 }
             }
         });
@@ -147,14 +166,15 @@ public class MainActivity extends AppCompatActivity
         arFragment.getArSceneView().getPlaneRenderer().setShadowReceiver(false);
 
         Anchor anchor = hitResult.createAnchor();
-        AnchorNode anchorNode = new AnchorNode(anchor);
-        anchorNode.setParent(arFragment.getArSceneView().getScene());
-        anchorNode.setWorldScale(new Vector3(3.5f, 3.5f, 3.5f));
+        this.anchorNode = new AnchorNode(anchor);
+        this.anchorNode.setParent(arFragment.getArSceneView().getScene());
 
-        TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
-        model.setParent(anchorNode);
-        model.setRenderable(this.renderable)
+        this.model = new TransformableNode(arFragment.getTransformationSystem());
+        this.model.setParent(this.anchorNode);
+        this.model.setRenderable(this.renderable)
                 .animate(true).start();
         model.select();
+
+
     }
 }
