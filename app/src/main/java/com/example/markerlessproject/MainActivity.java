@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 if(renderable != null) {
-                    arFragment.getArSceneView().getScene().removeChild(model);
+                    anchorNode.setAnchor(null);
                 }
             }
         });
