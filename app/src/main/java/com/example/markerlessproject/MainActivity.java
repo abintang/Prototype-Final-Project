@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
 
     Button button;
 
-    Button deleteButton;
+    FloatingActionButton deleteButton;
 
     private AnchorNode anchorNode;
     private TransformableNode model;
