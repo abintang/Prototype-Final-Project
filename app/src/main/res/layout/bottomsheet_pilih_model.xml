@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/darkbg2"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:id="@+id/bottomSheet"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="0dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/darkbg2"
+        app:cardCornerRadius="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/closeIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:src="@drawable/baseline_close_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:tint="@color/white_tx"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title_tx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinssemi"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/white_tx"
+                android:text="Pilih Objek Tata Surya"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/textKategori"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kategori:"
+                android:textSize="@dimen/_11sdp"
+                android:textColor="@color/white_tx"
+                android:layout_marginStart="@dimen/_28sdp"
+                android:fontFamily="@font/poppinsmed"
+                android:layout_marginTop="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_tx" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/kategoriPlanet"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_20sdp"
+                app:cardBackgroundColor="@color/colorButtonCategory"
+                app:strokeColor="@color/colorButtonCategory"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@id/textKategori"
+                app:layout_constraintTop_toTopOf="@id/textKategori"
+                app:layout_constraintBottom_toBottomOf="@id/textKategori">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white_tx"
+                        android:text="Planet"
+                        android:fontFamily="@font/poppinsreg"
+                        android:textSize="@dimen/_9sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/kategoriBintang"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_20sdp"
+                app:cardBackgroundColor="@color/darkbg2"
+                app:strokeColor="@color/colorButtonCategory"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@id/kategoriPlanet"
+                app:layout_constraintTop_toTopOf="@id/textKategori"
+                app:layout_constraintBottom_toBottomOf="@id/textKategori">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white_tx"
+                        android:text="Bintang"
+                        android:fontFamily="@font/poppinsreg"
+                        android:textSize="@dimen/_9sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/kategoriSatelit"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_20sdp"
+                app:cardBackgroundColor="@color/darkbg2"
+                app:strokeColor="@color/colorButtonCategory"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@id/kategoriBintang"
+                app:layout_constraintTop_toTopOf="@id/textKategori"
+                app:layout_constraintBottom_toBottomOf="@id/textKategori">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white_tx"
+                        android:text="Satelit"
+                        android:fontFamily="@font/poppinsreg"
+                        android:textSize="@dimen/_9sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMerkurius"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                app:strokeColor="@color/outline_card"
+                app:strokeWidth="@dimen/_1sdp"
+                app:cardBackgroundColor="@color/darkbg"
+                app:layout_constraintTop_toBottomOf="@id/textKategori"
+                app:layout_constraintStart_toStartOf="@id/textKategori"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_merkurius"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/mercury"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/poppinsmed"
+                        android:text="Merkurius"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white_tx"
+                        app:layout_constraintTop_toBottomOf="@id/iv_merkurius"
+                        app:layout_constraintStart_toStartOf="@id/iv_merkurius"
+                        app:layout_constraintEnd_toEndOf="@id/iv_merkurius"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardVenus"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                app:strokeColor="@color/outline_card"
+                app:strokeWidth="@dimen/_1sdp"
+                app:cardBackgroundColor="@color/darkbg"
+                app:layout_constraintTop_toBottomOf="@id/textKategori"
+                app:layout_constraintStart_toEndOf="@id/cardMerkurius"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_venus"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/venus"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/poppinsmed"
+                        android:text="Venus"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white_tx"
+                        app:layout_constraintTop_toBottomOf="@id/iv_venus"
+                        app:layout_constraintStart_toStartOf="@id/iv_venus"
+                        app:layout_constraintEnd_toEndOf="@id/iv_venus"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardBumi"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                app:strokeColor="@color/outline_card"
+                app:strokeWidth="@dimen/_1sdp"
+                app:cardBackgroundColor="@color/darkbg"
+                app:layout_constraintTop_toBottomOf="@id/textKategori"
+                app:layout_constraintStart_toEndOf="@id/cardVenus"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_bumi"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/earth"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/poppinsmed"
+                        android:text="Bumi"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white_tx"
+                        app:layout_constraintTop_toBottomOf="@id/iv_bumi"
+                        app:layout_constraintStart_toStartOf="@id/iv_bumi"
+                        app:layout_constraintEnd_toEndOf="@id/iv_bumi"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMars"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                app:strokeColor="@color/outline_card"
+                app:strokeWidth="@dimen/_1sdp"
+                app:cardBackgroundColor="@color/darkbg"
+                app:layout_constraintTop_toBottomOf="@id/cardMerkurius"
+                app:layout_constraintStart_toStartOf="@id/cardMerkurius"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_mars"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/mars"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/poppinsmed"
+                        android:text="Mars"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white_tx"
+                        app:layout_constraintTop_toBottomOf="@id/iv_mars"
+                        app:layout_constraintStart_toStartOf="@id/iv_mars"
+                        app:layout_constraintEnd_toEndOf="@id/iv_mars"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardJupiter"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                app:strokeColor="@color/outline_card"
+                app:strokeWidth="@dimen/_1sdp"
+                app:cardBackgroundColor="@color/darkbg"
+                app:layout_constraintTop_toBottomOf="@id/cardVenus"
+                app:layout_constraintStart_toEndOf="@id/cardMars"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_jupiter"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/jupiter"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/poppinsmed"
+                        android:text="Jupiter"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white_tx"
+                        app:layout_constraintTop_toBottomOf="@id/iv_jupiter"
+                        app:layout_constraintStart_toStartOf="@id/iv_jupiter"
+                        app:layout_constraintEnd_toEndOf="@id/iv_jupiter"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSaturn"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                app:strokeColor="@color/outline_card"
+                app:strokeWidth="@dimen/_1sdp"
+                app:cardBackgroundColor="@color/darkbg"
+                app:layout_constraintTop_toBottomOf="@id/cardBumi"
+                app:layout_constraintStart_toEndOf="@id/cardJupiter"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_saturn"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/saturn"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/poppinsmed"
+                        android:text="Saturnus"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white_tx"
+                        app:layout_constraintTop_toBottomOf="@id/iv_saturn"
+                        app:layout_constraintStart_toStartOf="@id/iv_saturn"
+                        app:layout_constraintEnd_toEndOf="@id/iv_saturn"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardUranus"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                app:strokeColor="@color/outline_card"
+                app:strokeWidth="@dimen/_1sdp"
+                app:cardBackgroundColor="@color/darkbg"
+                app:layout_constraintTop_toBottomOf="@id/cardMars"
+                app:layout_constraintStart_toStartOf="@id/cardMars"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_uranus"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/uranus"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/poppinsmed"
+                        android:text="Uranus"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white_tx"
+                        app:layout_constraintTop_toBottomOf="@id/iv_uranus"
+                        app:layout_constraintStart_toStartOf="@id/iv_uranus"
+                        app:layout_constraintEnd_toEndOf="@id/iv_uranus"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardNeptunus"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                app:strokeColor="@color/outline_card"
+                app:strokeWidth="@dimen/_1sdp"
+                app:cardBackgroundColor="@color/darkbg"
+                app:layout_constraintTop_toBottomOf="@id/cardJupiter"
+                app:layout_constraintStart_toEndOf="@id/cardUranus"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_neptunus"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/neptune"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/poppinsmed"
+                        android:text="Neptunus"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white_tx"
+                        app:layout_constraintTop_toBottomOf="@id/iv_neptunus"
+                        app:layout_constraintStart_toStartOf="@id/iv_neptunus"
+                        app:layout_constraintEnd_toEndOf="@id/iv_neptunus"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                app:layout_constraintTop_toBottomOf="@id/cardNeptunus"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

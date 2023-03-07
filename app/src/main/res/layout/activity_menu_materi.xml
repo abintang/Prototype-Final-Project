@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkbg2"
+    tools:context=".MenuMateriActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/d"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/darkbg2"
+        android:elevation="0dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_pilih_materi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            app:navigationIcon="@drawable/baseline_arrow_back_ios_new_24">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/white_tx"
+                android:fontFamily="@font/poppinssemi"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_16sdp"
+                android:layout_height="wrap_content"
+                android:text="List Materi"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/d">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardKategori"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_95sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                app:strokeWidth="@dimen/_1sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                app:strokeColor="#1d2e4c"
+                app:layout_constraintTop_toBottomOf="@id/textKategori"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:cardBackgroundColor="#1d2e4c">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/illust_kategori"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:src="@drawable/planet"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_kategori"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:fontFamily="@font/poppinssemi"
+                        android:text="Kategori - Planet"
+                        android:textColor="@color/white_tx"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintStart_toEndOf="@id/illust_kategori"
+                        app:layout_constraintTop_toTopOf="@id/illust_kategori" />
+
+                    <TextView
+                        android:id="@+id/tv_desc_kategori"
+                        android:layout_width="@dimen/_135sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/poppinsreg"
+                        android:text="Planet adalah salah satu objek langit yang ada pada tata surya kita. Terdiri dari 8 Jumlah Planet yang mengorbit atau mengitari Matahari"
+                        android:textColor="@color/white_tx"
+                        android:textSize="@dimen/_7sdp"
+                        app:layout_constraintStart_toStartOf="@id/tv_kategori"
+                        app:layout_constraintTop_toBottomOf="@id/tv_kategori" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/textKategori"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kategori:"
+                android:textSize="@dimen/_11sdp"
+                android:textColor="@color/white_tx"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:fontFamily="@font/poppinsmed"
+                android:layout_marginTop="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="@id/cardKategori"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/kategoriPlanet"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_20sdp"
+                app:cardBackgroundColor="@color/colorButtonCategory"
+                app:strokeColor="@color/colorButtonCategory"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@id/textKategori"
+                app:layout_constraintTop_toTopOf="@id/textKategori"
+                app:layout_constraintBottom_toBottomOf="@id/textKategori">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white_tx"
+                        android:text="Planet"
+                        android:fontFamily="@font/poppinsreg"
+                        android:textSize="@dimen/_9sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/kategoriBintang"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_20sdp"
+                app:cardBackgroundColor="@color/darkbg2"
+                app:strokeColor="@color/colorButtonCategory"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@id/kategoriPlanet"
+                app:layout_constraintTop_toTopOf="@id/textKategori"
+                app:layout_constraintBottom_toBottomOf="@id/textKategori">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white_tx"
+                        android:text="Bintang"
+                        android:fontFamily="@font/poppinsreg"
+                        android:textSize="@dimen/_9sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/kategoriSatelit"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_20sdp"
+                app:cardBackgroundColor="@color/darkbg2"
+                app:strokeColor="@color/colorButtonCategory"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@id/kategoriBintang"
+                app:layout_constraintTop_toTopOf="@id/textKategori"
+                app:layout_constraintBottom_toBottomOf="@id/textKategori">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white_tx"
+                        android:text="Satelit"
+                        android:fontFamily="@font/poppinsreg"
+                        android:textSize="@dimen/_9sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_title_materi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Materi - Planet"
+                android:textColor="@color/white_tx"
+                android:fontFamily="@font/poppinssemi"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintTop_toBottomOf="@id/cardKategori"
+                app:layout_constraintStart_toStartOf="@id/textKategori"
+                android:layout_marginTop="@dimen/_20sdp"/>
+
+            <TextView
+                android:id="@+id/tv_title_materi_desc"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="wrap_content"
+                android:text="Dibawah ini adalah list materi kategori planet. Klik materi dibawah untuk melihat detail materi !"
+                android:textColor="@color/white_tx"
+                android:fontFamily="@font/poppinsreg"
+                android:textSize="@dimen/_9sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_materi"
+                app:layout_constraintStart_toStartOf="@id/textKategori"
+                android:layout_marginTop="@dimen/_3sdp"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/rv_materi_1"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:clickable="true"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_materi_desc"
+                app:layout_constraintStart_toStartOf="@id/tv_title_materi_desc"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardBackgroundColor="@color/darkbg">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/rv_icon_materi"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/mercury"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"/>
+
+                    <TextView
+                        android:id="@+id/rv_title_materi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Merkurius"
+                        android:textSize="@dimen/_10sdp"
+                        android:fontFamily="@font/poppinssemi"
+                        android:textColor="@color/white_tx"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_minus4sdp"
+                        app:layout_constraintStart_toEndOf="@id/rv_icon_materi"
+                        app:layout_constraintTop_toTopOf="@id/rv_icon_materi"/>
+
+                    <TextView
+                        android:id="@+id/rv_materi_desc_singkat"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/rv_title_materi"
+                        app:layout_constraintStart_toStartOf="@id/rv_title_materi"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/poppinsreg"
+                        android:text="Planet terdekat yang mengorbit matahari dan merupakan planet terkecil di Tata Surya."
+                        android:textColor="@color/white_tx"
+                        android:textSize="@dimen/_7sdp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/rv_materi_2"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_80sdp"
+                app:layout_constraintTop_toBottomOf="@id/rv_materi_1"
+                app:layout_constraintStart_toStartOf="@id/tv_title_materi_desc"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                android:clickable="true"
+                app:cardBackgroundColor="@color/darkbg">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/rv_icon_materi1"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/venus"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"/>
+
+                    <TextView
+                        android:id="@+id/rv_title_materi1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Venus"
+                        android:textSize="@dimen/_10sdp"
+                        android:fontFamily="@font/poppinssemi"
+                        android:textColor="@color/white_tx"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_minus4sdp"
+                        app:layout_constraintStart_toEndOf="@id/rv_icon_materi1"
+                        app:layout_constraintTop_toTopOf="@id/rv_icon_materi1"/>
+
+                    <TextView
+                        android:id="@+id/rv_materi_desc_singkat1"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/rv_title_materi1"
+                        app:layout_constraintStart_toStartOf="@id/rv_title_materi1"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/poppinsreg"
+                        android:text="Planet kedua yang mengorbit matahari dan merupakan planet terdekat dengan Bumi."
+                        android:textColor="@color/white_tx"
+                        android:textSize="@dimen/_7sdp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/rv_materi_3"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:clickable="true"
+                app:layout_constraintTop_toBottomOf="@id/rv_materi_2"
+                app:layout_constraintStart_toStartOf="@id/tv_title_materi_desc"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardBackgroundColor="@color/darkbg">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/rv_icon_materi2"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/earth"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"/>
+
+                    <TextView
+                        android:id="@+id/rv_title_materi2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bumi"
+                        android:textSize="@dimen/_10sdp"
+                        android:fontFamily="@font/poppinssemi"
+                        android:textColor="@color/white_tx"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_minus4sdp"
+                        app:layout_constraintStart_toEndOf="@id/rv_icon_materi2"
+                        app:layout_constraintTop_toTopOf="@id/rv_icon_materi2"/>
+
+                    <TextView
+                        android:id="@+id/rv_materi_desc_singkat2"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/rv_title_materi2"
+                        app:layout_constraintStart_toStartOf="@id/rv_title_materi2"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/poppinsreg"
+                        android:text="Planet ketiga yang mengorbit matahari dan merupakan planet yang saat ini kita tempati."
+                        android:textColor="@color/white_tx"
+                        android:textSize="@dimen/_7sdp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/rv_materi_4"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:clickable="true"
+                app:layout_constraintTop_toBottomOf="@id/rv_materi_3"
+                app:layout_constraintStart_toStartOf="@id/tv_title_materi_desc"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardBackgroundColor="@color/darkbg">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/rv_icon_materi3"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/mars"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"/>
+
+                    <TextView
+                        android:id="@+id/rv_title_materi3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mars"
+                        android:textSize="@dimen/_10sdp"
+                        android:fontFamily="@font/poppinssemi"
+                        android:textColor="@color/white_tx"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_minus4sdp"
+                        app:layout_constraintStart_toEndOf="@id/rv_icon_materi3"
+                        app:layout_constraintTop_toTopOf="@id/rv_icon_materi3"/>
+
+                    <TextView
+                        android:id="@+id/rv_materi_desc_singkat3"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/rv_title_materi3"
+                        app:layout_constraintStart_toStartOf="@id/rv_title_materi3"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/poppinsreg"
+                        android:text="Planet keempat yang mengorbit matahari dan merupakan planet yang dijuluki sebagai Planet Merah."
+                        android:textColor="@color/white_tx"
+                        android:textSize="@dimen/_7sdp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/rv_materi_5"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:clickable="true"
+                app:layout_constraintTop_toBottomOf="@id/rv_materi_4"
+                app:layout_constraintStart_toStartOf="@id/tv_title_materi_desc"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardBackgroundColor="@color/darkbg">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/rv_icon_materi4"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/jupiter"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"/>
+
+                    <TextView
+                        android:id="@+id/rv_title_materi4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jupiter"
+                        android:textSize="@dimen/_10sdp"
+                        android:fontFamily="@font/poppinssemi"
+                        android:textColor="@color/white_tx"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_minus4sdp"
+                        app:layout_constraintStart_toEndOf="@id/rv_icon_materi4"
+                        app:layout_constraintTop_toTopOf="@id/rv_icon_materi4"/>
+
+                    <TextView
+                        android:id="@+id/rv_materi_desc_singkat4"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/rv_title_materi4"
+                        app:layout_constraintStart_toStartOf="@id/rv_title_materi4"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/poppinsreg"
+                        android:text="Planet kelima yang mengorbit matahari dan merupakan planet terbesar dalam tata surya."
+                        android:textColor="@color/white_tx"
+                        android:textSize="@dimen/_7sdp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/rv_materi_6"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:clickable="true"
+                app:layout_constraintTop_toBottomOf="@id/rv_materi_5"
+                app:layout_constraintStart_toStartOf="@id/tv_title_materi_desc"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardBackgroundColor="@color/darkbg">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/rv_icon_materi5"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/saturn"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"/>
+
+                    <TextView
+                        android:id="@+id/rv_title_materi5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Saturnus"
+                        android:textSize="@dimen/_10sdp"
+                        android:fontFamily="@font/poppinssemi"
+                        android:textColor="@color/white_tx"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_minus4sdp"
+                        app:layout_constraintStart_toEndOf="@id/rv_icon_materi5"
+                        app:layout_constraintTop_toTopOf="@id/rv_icon_materi5"/>
+
+                    <TextView
+                        android:id="@+id/rv_materi_desc_singkat5"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/rv_title_materi5"
+                        app:layout_constraintStart_toStartOf="@id/rv_title_materi5"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/poppinsreg"
+                        android:text="Planet ke-enam yang mengorbit matahari dan merupakan planet kedua terbesar dalam tata surya."
+                        android:textColor="@color/white_tx"
+                        android:textSize="@dimen/_7sdp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/rv_materi_7"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:clickable="true"
+                app:layout_constraintTop_toBottomOf="@id/rv_materi_6"
+                app:layout_constraintStart_toStartOf="@id/tv_title_materi_desc"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardBackgroundColor="@color/darkbg">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/rv_icon_materi6"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/uranus"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"/>
+
+                    <TextView
+                        android:id="@+id/rv_title_materi6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Uranus"
+                        android:textSize="@dimen/_10sdp"
+                        android:fontFamily="@font/poppinssemi"
+                        android:textColor="@color/white_tx"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_minus4sdp"
+                        app:layout_constraintStart_toEndOf="@id/rv_icon_materi6"
+                        app:layout_constraintTop_toTopOf="@id/rv_icon_materi6"/>
+
+                    <TextView
+                        android:id="@+id/rv_materi_desc_singkat6"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/rv_title_materi6"
+                        app:layout_constraintStart_toStartOf="@id/rv_title_materi6"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/poppinsreg"
+                        android:text="Planet ketujuh yang mengorbit matahari dan merupakan planet terbesar ketiga dalam tata surya."
+                        android:textColor="@color/white_tx"
+                        android:textSize="@dimen/_7sdp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/rv_materi_8"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:clickable="true"
+                app:layout_constraintTop_toBottomOf="@id/rv_materi_7"
+                app:layout_constraintStart_toStartOf="@id/tv_title_materi_desc"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardBackgroundColor="@color/darkbg">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/rv_icon_materi7"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/neptune"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"/>
+
+                    <TextView
+                        android:id="@+id/rv_title_materi7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Neptunus"
+                        android:textSize="@dimen/_10sdp"
+                        android:fontFamily="@font/poppinssemi"
+                        android:textColor="@color/white_tx"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_minus4sdp"
+                        app:layout_constraintStart_toEndOf="@id/rv_icon_materi7"
+                        app:layout_constraintTop_toTopOf="@id/rv_icon_materi7"/>
+
+                    <TextView
+                        android:id="@+id/rv_materi_desc_singkat7"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/rv_title_materi7"
+                        app:layout_constraintStart_toStartOf="@id/rv_title_materi7"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/poppinsreg"
+                        android:text="Planet terjauh yang mengorbit matahari dan merupakan planet terdingin di tata surya."
+                        android:textColor="@color/white_tx"
+                        android:textSize="@dimen/_7sdp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                app:layout_constraintTop_toBottomOf="@id/rv_materi_8" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

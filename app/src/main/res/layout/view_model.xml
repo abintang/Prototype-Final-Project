@@ -1,0 +1,13 @@
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_nama_card"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="3dp"
+    android:text="Merkurius"
+    android:textSize="11sp"
+    android:background="@drawable/rounded_bg"
+    android:textAlignment="center" />
