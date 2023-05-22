@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "266247651691",
+    "project_id": "astropedia-52bf9",
+    "storage_bucket": "astropedia-52bf9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266247651691:android:780a2c6758e93584e08c2e",
+        "android_client_info": {
+          "package_name": "com.example.markerlessproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266247651691-k8nafila6a9c45okd3nuu4pd94h3e04n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.markerlessproject",
+            "certificate_hash": "400c566d641228c93f7c8c57a677417c534dd2f2"
+          }
+        },
+        {
+          "client_id": "266247651691-j1pa7rv057iqaf1sj7ldisinf94j0hha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNvizoekrlg-VQfYJViQ0T2l4p_4aX5gU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266247651691-j1pa7rv057iqaf1sj7ldisinf94j0hha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuGameActivity"
+    android:background="@color/darkbg2">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/d"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/darkbg2"
+        android:elevation="0dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_pilih_materi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            app:navigationIcon="@drawable/baseline_arrow_back_ios_new_24">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/white_tx"
+                android:fontFamily="@font/poppinssemi"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_16sdp"
+                android:layout_height="wrap_content"
+                android:text="Game"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/upperSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/darkbg2"
+        app:cardElevation="2dp"
+        app:layout_constraintTop_toBottomOf="@id/d">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_profile_picture"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                app:civ_circle_background_color="@color/darkbg"
+                app:civ_border_width="@dimen/_5sdp"
+                app:civ_border_color="@color/darkbg"
+                android:elevation="@dimen/_10sdp"
+                android:src="@drawable/mercury"
+                android:layout_marginTop="@dimen/_30sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/iv_profile_picture"
+                app:layout_constraintStart_toStartOf="@id/iv_profile_picture"
+                app:layout_constraintEnd_toEndOf="@id/iv_profile_picture"
+                android:fontFamily="@font/poppinssemi"
+                android:textAlignment="center"
+                android:text="Bintang Aditya"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textColor="@color/white_tx"
+                android:textSize="@dimen/_14sdp"/>
+
+            <TextView
+                android:id="@+id/tv_desc_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsreg"
+                android:text="Rank tertinggi mu saat ini: -"
+                android:textColor="@color/white_tx"
+                android:textSize="@dimen/_11sdp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/tv_nama"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/_5sdp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_desc_total"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tv_selectMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinssemi"
+        android:textSize="@dimen/_12sdp"
+        android:text="Mulai Game"
+        android:textColor="@color/white_tx"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@id/upperSection"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardMulai"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:strokeWidth="@dimen/_1sdp"
+        app:strokeColor="@color/outline_card"
+        app:layout_constraintTop_toBottomOf="@id/tv_selectMode"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        app:cardBackgroundColor="@color/darkbg2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="@dimen/_160sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsreg"
+                android:textColor="@color/white_tx"
+                android:textSize="@dimen/_9sdp"
+                android:text="Kamu bisa menguji pengetahuan mu terkait materi tata surya melalui game quiz ini lho, klik tombol mulai dibawah untuk memulai game quiz!"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginStart="@dimen/_8sdp"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/illust"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                app:layout_constraintTop_toTopOf="@id/desc"
+                app:layout_constraintStart_toEndOf="@id/desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/desc"
+                app:layout_constraintVertical_bias="0.312"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="75959-speed-up-the-game.json"
+                app:lottie_loop="true" />
+
+            <View
+                android:id="@+id/dividerCard"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                app:layout_constraintTop_toBottomOf="@id/desc"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@color/outline_card"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_mulai"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                app:layout_constraintTop_toBottomOf="@id/dividerCard"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="Mulai Game"
+                android:backgroundTint="@color/darkbg"
+                android:textSize="@dimen/_10sdp"
+                android:textAllCaps="false"
+                android:textAlignment="center"
+                android:fontFamily="@font/poppinssemi"
+                android:textColor="@color/white_tx"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tv_selectrank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinssemi"
+        android:textSize="@dimen/_12sdp"
+        android:text="Lihat Ranking"
+        android:textColor="@color/white_tx"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@id/cardMulai"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardRanking"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_125sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:strokeWidth="@dimen/_1sdp"
+        app:strokeColor="@color/outline_card"
+        app:layout_constraintTop_toBottomOf="@id/tv_selectrank"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        app:cardBackgroundColor="@color/darkbg2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/desc_rank"
+                android:layout_width="@dimen/_160sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsreg"
+                android:textColor="@color/white_tx"
+                android:textSize="@dimen/_9sdp"
+                android:text="Dan kamu juga bisa melihat ranking pemain dari points hasil game quiz juga lho!, klik tombol dibawah untuk melihat ranking pemain!"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginStart="@dimen/_8sdp"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/illust2"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                app:layout_constraintTop_toTopOf="@id/desc_rank"
+                app:layout_constraintStart_toEndOf="@id/desc_rank"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/desc_rank"
+                app:layout_constraintVertical_bias="0.312"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="90547-trophy-animation.json"
+                app:lottie_loop="true" />
+
+            <View
+                android:id="@+id/dividerCard2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                app:layout_constraintTop_toBottomOf="@id/desc_rank"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@color/outline_card"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_ranking"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                app:layout_constraintTop_toBottomOf="@id/dividerCard2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="Lihat Ranking Pemain"
+                android:textSize="@dimen/_10sdp"
+                android:textAllCaps="false"
+                android:textAlignment="center"
+                android:backgroundTint="@color/darkbg"
+                android:fontFamily="@font/poppinssemi"
+                android:textColor="@color/white_tx"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

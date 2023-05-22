@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature
         android:glEsVersion="0x00030000"
@@ -19,17 +20,33 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.MarkerlessProject"
-        tools:targetApi="31" >
+        tools:targetApi="31">
         <activity
-            android:name=".DetailMateri"
+            android:name=".RankingActivity"
             android:exported="false" />
         <activity
-            android:name=".MenuMateriActivity"
-            android:exported="false"
-            android:parentActivityName=".MainMenu"/>
+            android:name=".ResultScoreActivity"
+            android:exported="false" />
         <activity
-            android:name=".MainMenu"
-            android:exported="true" >
+            android:name=".InfoSplash"
+            android:exported="false" />
+        <activity
+            android:name=".GameArActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PanduanActivity"
+            android:exported="false"
+            android:parentActivityName=".MainMenu" />
+        <activity
+            android:name=".MenuGameActivity"
+            android:exported="false"
+            android:parentActivityName=".MainMenu" />
+        <activity
+            android:name=".SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,9 +54,19 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".DetailMateri"
+            android:exported="false" />
+        <activity
+            android:name=".MenuMateriActivity"
+            android:exported="false"
+            android:parentActivityName=".MainMenu" />
+        <activity
+            android:name=".MainMenu"
+            android:exported="false" />
+        <activity
             android:name=".SelectionMenu"
             android:exported="false"
-            android:parentActivityName=".MainMenu"/>
+            android:parentActivityName=".MainMenu" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />

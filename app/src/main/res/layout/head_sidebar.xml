@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#131517"
+    android:padding="@dimen/_20sdp">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_ava1"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_nama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/iv_ava1"
+        app:layout_constraintTop_toTopOf="@id/iv_ava1"
+        app:layout_constraintBottom_toBottomOf="@id/iv_ava1"
+        android:text="Bintang Aditya"
+        android:fontFamily="@font/poppinssemi"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/white_tx"
+        android:layout_marginTop="@dimen/_minus18sdp"
+        android:layout_marginStart="@dimen/_62sdp"/>
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/iv_ava1"
+        app:layout_constraintTop_toBottomOf="@id/tv_nama"
+        android:text="Bintang Aditya"
+        android:fontFamily="@font/poppinsreg"
+        android:textSize="@dimen/_9sdp"
+        android:textColor="@color/white_tx"
+        android:layout_marginStart="@dimen/_62sdp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

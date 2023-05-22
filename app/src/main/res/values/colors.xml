@@ -13,6 +13,9 @@
     <color name="white_tl">#99FFFFFF</color>
     <color name="black_opa">#99000000</color>
 
+
+    <color name="blacktrans">#80000000</color>
+
     <color name="background">#fdfdfd</color>
     <color name="gray">#f4f4f4</color>
     <color name="gray2">#d3d3d3</color>
@@ -24,6 +27,7 @@
     <color name="softred">#F6E8E8</color>
 
     <color name="darkbg">#2A2E3D</color>
+    <color name="darkbgg">#3F51B5</color>
 
     <color name="white_tx">#fefefe</color>
     <color name="bg_card">#191e2a</color>
@@ -31,7 +35,14 @@
     <color name="dark">#131517</color>
     <color name="darkbg2">#1f2123</color>
 
+    <color name="outline">#262729</color>
+
     <color name="selected">#1d2e4c</color>
 
     <color name="colorButtonCategory">#37383a</color>
+
+    <color name="red">#f75555</color>
+    <color name="blue">#3779ff</color>
+    <color name="green">#12d18e</color>
+    <color name="orange">#ff981f</color>
 </resources>

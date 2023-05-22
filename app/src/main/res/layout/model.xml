@@ -16,15 +16,17 @@
         android:layout_gravity="center"
         android:text="Merkurius"
         android:textSize="11sp"
+        android:textColor="@color/black3"
         android:fontFamily="@font/poppinsreg"
         android:background="@drawable/rounded_bg"
         android:textAlignment="center" />
 
     <Button
         android:id="@+id/buttonDetail"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:backgroundTint="#e9e6ee"
-        android:text="Detail"
+        android:layout_gravity="center"
+        android:text="Detail Materi"
         android:textSize="10sp"
         android:textAllCaps="false"
         android:textColor="@color/black3"
