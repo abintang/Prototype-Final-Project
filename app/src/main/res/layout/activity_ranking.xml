@@ -4,6 +4,383 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RankingActivity">
+    tools:context=".RankingActivity"
+    android:background="@color/darkbg2">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/d"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/darkbg2"
+        android:elevation="0dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_pilih_materi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            app:navigationIcon="@drawable/baseline_arrow_back_ios_new_24">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/white_tx"
+                android:fontFamily="@font/poppinssemi"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_16sdp"
+                android:layout_height="wrap_content"
+                android:text="Ranking"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabGravity="fill"
+        app:layout_constraintTop_toBottomOf="@id/d"
+        android:background="@color/darkbg2"
+        app:tabIndicatorColor="@color/white_tx"
+        app:tabRippleColor="@color/white_tx"
+        android:elevation="1dp"
+        app:tabTextColor="@color/white_tl"
+        app:tabPaddingStart="@dimen/_20sdp"
+        app:tabPaddingEnd="@dimen/_20sdp"
+        app:tabTextAppearance="@style/tabLayoutText2"
+        app:tabSelectedTextColor="@color/white_tx">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/semua_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semua"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/bulan_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bulan ini"/>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tahun_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tahun ini"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollRanking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/firstRankCard"
+                android:layout_width="@dimen/_85sdp"
+                android:layout_height="@dimen/_150sdp"
+                app:cardBackgroundColor="@color/darkbg2"
+                app:strokeColor="@color/outline_card"
+                app:strokeWidth="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/aniCrown"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="103071-upgrade-to-premium.json"
+                        app:lottie_loop="true"
+                        app:layout_constraintBottom_toTopOf="@id/card"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="@color/darkbg2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:strokeWidth="0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/ava_first"
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:src="@drawable/avatar"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/tv_firstRankName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxLength="15"
+                                android:textSize="@dimen/_8sdp"
+                                app:layout_constraintTop_toBottomOf="@id/ava_first"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:text="Kosong"
+                                android:textAlignment="center"
+                                android:textColor="@color/white_tx"
+                                android:fontFamily="@font/poppinssemi"/>
+
+                            <TextView
+                                android:id="@+id/tv_firstRankPoint"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxLength="16"
+                                android:textSize="@dimen/_10sdp"
+                                app:layout_constraintTop_toBottomOf="@id/tv_firstRankName"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:text="-"
+                                android:textAlignment="center"
+                                android:textColor="@color/white_tx"
+                                android:fontFamily="@font/poppinssemi"/>
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/secondRankCard"
+                android:layout_width="@dimen/_85sdp"
+                android:layout_height="@dimen/_120sdp"
+                app:cardBackgroundColor="@color/darkbg2"
+                app:strokeColor="@color/outline_card"
+                app:strokeWidth="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="@id/firstRankCard"
+                app:layout_constraintEnd_toStartOf="@id/firstRankCard">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="@color/darkbg2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:strokeWidth="0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/ava_second"
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:src="@drawable/avatar"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/tv_secondRankName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxLength="16"
+                                android:textSize="@dimen/_8sdp"
+                                app:layout_constraintTop_toBottomOf="@id/ava_second"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:text="Kosong"
+                                android:textAlignment="center"
+                                android:textColor="@color/white_tx"
+                                android:fontFamily="@font/poppinssemi"/>
+
+                            <TextView
+                                android:id="@+id/tv_secondRankPoint"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxLength="16"
+                                android:textSize="@dimen/_10sdp"
+                                app:layout_constraintTop_toBottomOf="@id/tv_secondRankName"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:text="-"
+                                android:textAlignment="center"
+                                android:textColor="@color/white_tx"
+                                android:fontFamily="@font/poppinssemi"/>
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/thirdRankCard"
+                android:layout_width="@dimen/_85sdp"
+                android:layout_height="@dimen/_100sdp"
+                app:cardBackgroundColor="@color/darkbg2"
+                app:strokeColor="@color/outline_card"
+                app:strokeWidth="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="@id/firstRankCard"
+                app:layout_constraintStart_toEndOf="@id/firstRankCard">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="@color/darkbg2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:strokeWidth="0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/ava_third"
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:src="@drawable/avatar"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/tv_thirdRankName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxLength="16"
+                                android:textSize="@dimen/_8sdp"
+                                app:layout_constraintTop_toBottomOf="@id/ava_third"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:text="Kosong"
+                                android:textAlignment="center"
+                                android:textColor="@color/white_tx"
+                                android:fontFamily="@font/poppinssemi"/>
+
+                            <TextView
+                                android:id="@+id/tv_thirdRankPoint"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxLength="16"
+                                android:textSize="@dimen/_10sdp"
+                                app:layout_constraintTop_toBottomOf="@id/tv_thirdRankName"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:text="-"
+                                android:textAlignment="center"
+                                android:textColor="@color/white_tx"
+                                android:fontFamily="@font/poppinssemi"/>
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleViewListRanking"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:nestedScrollingEnabled="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHeight_default="wrap"
+                app:layout_constraintTop_toBottomOf="@id/firstRankCard"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                app:layout_constraintTop_toBottomOf="@id/recycleViewListRanking"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/loadingCard"
+        app:cardBackgroundColor="@color/darkbg2"
+        android:layout_width="wrap_content"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_minus30sdp"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loadingAni"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="141535-rocket-morphing.json"
+                app:lottie_loop="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_20sdp"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinssemi"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Load Data, Tunggu Sebentar..."
+                android:textSize="@dimen/_11sdp"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_minus12sdp"
+                app:layout_constraintTop_toBottomOf="@id/loadingAni" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

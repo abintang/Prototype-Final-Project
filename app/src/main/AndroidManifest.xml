@@ -22,13 +22,19 @@
         android:theme="@style/Theme.MarkerlessProject"
         tools:targetApi="31">
         <activity
+            android:name=".DetailPanduanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignInGameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainMenuNonAkun"
+            android:exported="false" />
+        <activity
             android:name=".RankingActivity"
             android:exported="false" />
         <activity
             android:name=".ResultScoreActivity"
-            android:exported="false" />
-        <activity
-            android:name=".InfoSplash"
             android:exported="false" />
         <activity
             android:name=".GameArActivity"

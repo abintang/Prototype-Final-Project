@@ -108,7 +108,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardTotalBenar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_100sdp"
+        android:layout_height="@dimen/_130sdp"
         app:layout_constraintTop_toBottomOf="@id/cardPemain"
         app:cardBackgroundColor="#1D2E4C"
         android:layout_marginTop="@dimen/_10sdp"
@@ -147,7 +147,7 @@
 
             <TextView
                 android:id="@+id/tv_desc_total"
-                android:layout_width="@dimen/_100sdp"
+                android:layout_width="@dimen/_110sdp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tv_mini_desc_total"
                 android:textAlignment="center"

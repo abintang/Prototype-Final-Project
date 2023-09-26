@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,11 +24,15 @@ import com.bumptech.glide.Glide;
 import com.example.markerlessproject.models.ContentMateriModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class GameArActivity extends AppCompatActivity {
@@ -35,13 +42,23 @@ public class GameArActivity extends AppCompatActivity {
 
     ImageView imageSoal;
 
-    TextView textSoal, textJawaban1, textJawaban2, textJawaban3, textJawaban4, textScore, currentNumberQuiz;
-
+    TextView textSoal, textJawaban1, textJawaban2, textJawaban3, textJawaban4, textScore, currentNumberQuiz, token, timer;
     int score, no, number, totalJawabanBenar;
 
     String urlSoal;
 
     private Boolean opened;
+
+    String tokenString = "";
+
+    int idToken;
+
+    FirebaseAuth firebaseAuth;
+
+    FirebaseUser firebaseUser;
+
+    private int detik;
+
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +80,8 @@ public class GameArActivity extends AppCompatActivity {
         unCorrectSection.setVisibility(View.INVISIBLE);
         nextSection.setVisibility(View.INVISIBLE);
 
+        token = findViewById(R.id.token);
+
         nextButton = findViewById(R.id.btn_next);
 
         textSoal = findViewById(R.id.tv_soal);
@@ -80,14 +99,20 @@ public class GameArActivity extends AppCompatActivity {
         no = getIntent().getExtras().getInt("no");
         number = getIntent().getExtras().getInt("number");
         totalJawabanBenar = getIntent().getExtras().getInt("jawabanBenar");
+        detik = getIntent().getExtras().getInt("detik");
+
+        timer = findViewById(R.id.tv_timer);
 
         number++;
+
 
         textScore.setText(Integer.toString(score));
         String textCurrentNumber = number + "/10";
         currentNumberQuiz.setText(textCurrentNumber);
 
         urlSoal = "https://tata-surya.skripsijoss.my.id/public/SoalGame";
+
+        timer();
 
         getData();
 
@@ -141,13 +166,16 @@ public class GameArActivity extends AppCompatActivity {
                             cardLoading.setVisibility(View.GONE);
                             cardGame.setVisibility(View.VISIBLE);
 
-                            if (number == 10) {
+                            if (number >= 10) {
                                 nextButton.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
+
+                                        getIdToken();
                                         Intent intent = new Intent(GameArActivity.this, ResultScoreActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         intent.putExtra("score", score);
+                                        intent.putExtra("detik", detik);
                                         intent.putExtra("jawabanBenar", totalJawabanBenar);
                                         startActivity(intent);
                                     }
@@ -157,13 +185,19 @@ public class GameArActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(View v) {
                                         Random random = new Random();
-                                        int randomNumber = random.nextInt(32);
+                                        int randomNumber;
+                                        randomNumber = random.nextInt(36);
+
+                                        while (randomNumber == no) {
+                                            randomNumber = random.nextInt(36);
+                                        }
                                         Intent intent = new Intent(GameArActivity.this, GameArActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         intent.putExtra("no", randomNumber);
                                         intent.putExtra("number", number);
                                         intent.putExtra("score", score);
                                         intent.putExtra("jawabanBenar", totalJawabanBenar);
+                                        intent.putExtra("detik", detik);
                                         startActivity(intent);
                                     }
                                 });
@@ -179,7 +213,9 @@ public class GameArActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Log.i("TEST", "onErrorResponse: " + error.getMessage());
                     }
-                });
+                }) {
+
+        };
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         requestQueue.add(stringRequest);
@@ -199,7 +235,7 @@ public class GameArActivity extends AppCompatActivity {
                 btnJawaban3.setClickable(false);
                 btnJawaban4.setClickable(false);
 
-                if(jawabanBenar.equalsIgnoreCase(textJawaban1.getText().toString())) {
+                if (jawabanBenar.equalsIgnoreCase(textJawaban1.getText().toString())) {
                     unCorrectSection.setVisibility(View.INVISIBLE);
                     correctSection.setVisibility(View.VISIBLE);
                     nextSection.setVisibility(View.VISIBLE);
@@ -215,7 +251,7 @@ public class GameArActivity extends AppCompatActivity {
                     setAnimationDown(unCorrectSection);
                     setAnimationUp(nextSection);
 
-                    if (score != 0)  {
+                    if (score != 0) {
                         score -= 5;
                         if (score < 0) {
                             score = 0;
@@ -231,5 +267,94 @@ public class GameArActivity extends AppCompatActivity {
         Intent intent = new Intent(GameArActivity.this, MenuGameActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    public void getIdToken() {
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        assert firebaseUser != null;
+
+        String url = "https://tata-surya.skripsijoss.my.id/public/user/detail/" + firebaseUser.getUid();
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject object = jsonObject.getJSONObject("data");
+                            idToken = object.getInt("id");
+                            tokenString = object.getString("api_token");
+                            String jawabanBenar = totalJawabanBenar + "/10";
+                            String totalScore = Integer.toString(score);
+
+                            postPoint(Integer.toString(idToken), totalScore, jawabanBenar, tokenString);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("TEST2", "onErrorResponse: " + error.getMessage());
+                    }
+                });
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        requestQueue.add(stringRequest);
+    }
+
+    public void postPoint(String id, String totalPoint, String jawabanBenar, String token) {
+        String url = "https://tata-surya.skripsijoss.my.id/public/SoalRank/insert";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(GameArActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("id_user", String.valueOf(id));
+                params.put("total_point", totalPoint);
+                params.put("jawaban_benar", jawabanBenar);
+                params.put("durasi", String.valueOf(detik));
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                String auth = "Bearer " + token;
+                headers.put("Authorization", auth);
+                return headers;
+            }
+
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(stringRequest);
+    }
+
+
+    public void timer() {
+        final Handler handler
+                = new Handler();
+
+        handler.post(new Runnable() {
+            @Override
+            public void run()
+            {
+                timer.setText(detik +" Detik");
+                detik++;
+                handler.postDelayed(this, 1000);
+            }
+        });
+
     }
 }

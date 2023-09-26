@@ -24,6 +24,8 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,6 +58,8 @@ public class DetailMateri extends AppCompatActivity {
     String urlMateri;
     ConstraintLayout detailMateri;
 
+    FirebaseAuth firebaseAuth;
+
     String idKategori;
 
     @SuppressLint("MissingInflatedId")
@@ -63,6 +67,10 @@ public class DetailMateri extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_materi);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        // Initialize firebase user
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         idMateri = getIntent().getExtras().getInt("id");
         urlMateri = "https://tata-surya.skripsijoss.my.id/public/Materi/detail/" + idMateri;
@@ -111,62 +119,7 @@ public class DetailMateri extends AppCompatActivity {
         fakta2 = findViewById(R.id.tv_fact2);
         fakta3 = findViewById(R.id.tv_fact3);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, urlMateri,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONObject object = jsonObject.getJSONObject("data");
-                            materi.setText(object.getString("nama"));
-                            miniDeskripsi.setText(object.getString("mini_deskripsi"));
-                            String dataDeskripsi = object.getString("deskripsi");
-                            dataDeskripsi = dataDeskripsi.replace("\\n", System.getProperty("line.separator"));
-                            deskripsi.setText(dataDeskripsi);
-                            jarak.setText(object.getString("jarak_matahari"));
-                            periode.setText(object.getString("periode_orbit"));
-                            massa.setText(object.getString("massa"));
-                            diameter.setText(object.getString("diameter"));
-
-                            titleFakta.setText("Fakta Lainnya Terkait " + object.getString("nama"));
-                            fakta1.setText(object.getString("fakta_1"));
-                            fakta2.setText(object.getString("fakta_2"));
-                            fakta3.setText(object.getString("fakta_3"));
-
-                            idKategori = object.getString("id_kategori");
-
-                            if(idKategori.equals("3")) {
-                                titleJarak.setText("Jarak dari Bumi");
-                                createSnackbar(infoPeriode, "Periode Orbit adalah waktu (waktu bumi) yang dibutuhkan satelit untuk mengelilingi objek yang mereka orbit");
-                            } else {
-                                createSnackbar(infoPeriode, "Periode Orbit adalah waktu (waktu bumi) yang dibutuhkan planet untuk mengelilingi matahari");
-
-                            }
-
-                            String namaImage = object.getString("gambar");
-                            String urlFotoMateri = "https://tata-surya.skripsijoss.my.id/public/imageMateri/" + namaImage;
-
-
-                            Glide.with(DetailMateri.this).load(urlFotoMateri).into(fotoMateri);
-
-
-                            cardLoading.setVisibility(View.GONE);
-                            scrollView.setVisibility(View.VISIBLE);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.i("TEST", "onErrorResponse: " + error.getMessage());
-                    }
-                });
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-
-        requestQueue.add(stringRequest);
-
+        getData();
 
         // snackbar
         createSnackbar(infoDiameter, "Dalam hal astronomi, diameter dapat digunakan untuk mengukur ukuran suatu objek tata surya");
@@ -252,12 +205,78 @@ public class DetailMateri extends AppCompatActivity {
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DetailMateri.this, MainMenu.class);
+                // Check condition
+                Intent intent;
+                if (firebaseUser != null) {
+                    intent = new Intent(DetailMateri.this, MainMenu.class);
+                } else {
+                    intent = new Intent(DetailMateri.this, MainMenuNonAkun.class);
+                }
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
     }
+
+    private void getData() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, urlMateri,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject object = jsonObject.getJSONObject("data");
+                            materi.setText(object.getString("nama"));
+                            miniDeskripsi.setText(object.getString("mini_deskripsi"));
+                            String dataDeskripsi = object.getString("deskripsi");
+                            dataDeskripsi = dataDeskripsi.replace("\\n", System.getProperty("line.separator"));
+                            deskripsi.setText(dataDeskripsi);
+                            jarak.setText(object.getString("jarak_matahari"));
+                            periode.setText(object.getString("periode_orbit"));
+                            massa.setText(object.getString("massa"));
+                            diameter.setText(object.getString("diameter"));
+
+                            titleFakta.setText("Fakta Lainnya Terkait " + object.getString("nama"));
+                            fakta1.setText(object.getString("fakta_1"));
+                            fakta2.setText(object.getString("fakta_2"));
+                            fakta3.setText(object.getString("fakta_3"));
+
+                            idKategori = object.getString("id_kategori");
+
+                            if(idKategori.equals("3")) {
+                                titleJarak.setText("Jarak dari Bumi");
+                                createSnackbar(infoPeriode, "Periode Orbit adalah waktu (waktu bumi) yang dibutuhkan satelit untuk mengelilingi objek yang mereka orbit");
+                            } else {
+                                createSnackbar(infoPeriode, "Periode Orbit adalah waktu (waktu bumi) yang dibutuhkan planet untuk mengelilingi matahari");
+
+                            }
+
+                            String namaImage = object.getString("gambar");
+                            String urlFotoMateri = "https://tata-surya.skripsijoss.my.id/public/imageMateri/" + namaImage;
+
+
+                            Glide.with(DetailMateri.this).load(urlFotoMateri).into(fotoMateri);
+
+
+                            cardLoading.setVisibility(View.GONE);
+                            scrollView.setVisibility(View.VISIBLE);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("TEST", "onErrorResponse: " + error.getMessage());
+                    }
+                });
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        requestQueue.add(stringRequest);
+    }
+
+
 
     private void setVisibilityJustified(JustifiedTextView textView, Boolean isGone) {
         if (isGone) {

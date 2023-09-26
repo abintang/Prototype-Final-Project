@@ -30,7 +30,7 @@ public class MenuGameActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     GoogleSignInClient googleSignInClient;
 
-    MaterialButton buttonAR;
+    MaterialButton buttonAR, buttonRanking;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -43,8 +43,16 @@ public class MenuGameActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         namaPlayer = findViewById(R.id.tv_nama);
         fotoPlayer = findViewById(R.id.iv_profile_picture);
+        buttonRanking = findViewById(R.id.btn_ranking);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -72,17 +80,37 @@ public class MenuGameActivity extends AppCompatActivity {
                 intent.putExtra("score", 0);
                 intent.putExtra("number", 0);
                 intent.putExtra("jawabanBenar", 0);
+                intent.putExtra("detik", 0);
                 startActivity(intent);
             }
         });
 
+        buttonRanking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuGameActivity.this, RankingActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+
+        });
 
 
     }
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(MenuGameActivity.this, MainMenu.class);
+        firebaseAuth = FirebaseAuth.getInstance();
+        // Initialize firebase user
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        // Check condition
+        Intent intent;
+        if (firebaseUser != null) {
+            intent = new Intent(MenuGameActivity.this, MainMenu.class);
+        } else {
+            intent = new Intent(MenuGameActivity.this, MainMenuNonAkun.class);
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

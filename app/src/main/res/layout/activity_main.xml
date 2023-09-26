@@ -108,7 +108,7 @@
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_70sdp"
         android:layout_marginBottom="@dimen/_15sdp"
-        android:text="Ubah 3D Model AR"
+        android:text="Ubah 3D Objek AR"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"

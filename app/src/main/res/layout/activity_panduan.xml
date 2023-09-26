@@ -48,14 +48,14 @@
         />
 
     <View
-    android:id="@+id/divider"
+        android:id="@+id/divider"
         android:layout_width="match_parent"
-    android:layout_height="@dimen/_1sdp"
-    android:layout_marginTop="@dimen/_10sdp"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@id/tv_pand"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
-    android:background="@color/outline_card"/>
+        android:background="@color/outline_card"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/button_panduan"

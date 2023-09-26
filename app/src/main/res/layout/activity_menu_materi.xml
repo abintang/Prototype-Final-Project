@@ -39,6 +39,7 @@
         app:cardBackgroundColor="@color/darkbg2"
         android:layout_width="wrap_content"
         app:cardElevation="0dp"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +83,7 @@
         android:id="@+id/scrollMateri"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/d">
 
         <androidx.constraintlayout.widget.ConstraintLayout

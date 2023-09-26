@@ -163,9 +163,13 @@ public class MainActivity extends AppCompatActivity
         }
 
         gantiModel = findViewById(R.id.gantiModel);
+
+        bottomSheet.setVisibility(View.GONE);
+
         gantiModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bottomSheet.setVisibility(View.VISIBLE);
                 sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                 gantiModel.setVisibility(View.GONE);
                 deleteButton.setVisibility(View.GONE);
@@ -192,6 +196,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 gantiModel.setVisibility(View.VISIBLE);
                 deleteButton.setVisibility(View.VISIBLE);
+                bottomSheet.setVisibility(View.GONE);
                 sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
         });

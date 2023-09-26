@@ -1,26 +1,26 @@
 package com.example.markerlessproject;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,18 +31,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignInActivity extends AppCompatActivity {
+public class SignInGameActivity extends AppCompatActivity {
     // Initialize variables
     ExtendedFloatingActionButton btSignIn, btnTanpaDaftar;
     GoogleSignInClient googleSignInClient;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+
+    TextView welcome, welcomeMessage;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -53,6 +52,14 @@ public class SignInActivity extends AppCompatActivity {
         // Assign variable
         btSignIn = findViewById(R.id.signInButton);
         btnTanpaDaftar = findViewById(R.id.tanpaRegisterButton);
+        welcome = findViewById(R.id.tv_welcome);
+        welcomeMessage = findViewById(R.id.tv_welcome_message);
+
+        btnTanpaDaftar.setVisibility(View.INVISIBLE);
+
+
+        welcome.setText("Eitsss, Nanti dulu !");
+        welcomeMessage.setText("Untuk menggunakan fitur ini, kamu diharuskan untuk mendaftar dengan menggunakan akun Google melalui button dibawah ini ya !");
 
         // Initialize sign in options the client-id is copied form google-services.json file
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -61,7 +68,12 @@ public class SignInActivity extends AppCompatActivity {
                 .build();
 
         // Initialize sign in client
-        googleSignInClient = GoogleSignIn.getClient(SignInActivity.this, googleSignInOptions);
+        googleSignInClient = GoogleSignIn.getClient(SignInGameActivity.this, googleSignInOptions);
+
+        // Initialize firebase auth
+        firebaseAuth = FirebaseAuth.getInstance();
+        // Initialize firebase user
+        firebaseUser = firebaseAuth.getCurrentUser();
 
         btSignIn.setOnClickListener((View.OnClickListener) view -> {
             // Initialize sign in intent
@@ -70,24 +82,6 @@ public class SignInActivity extends AppCompatActivity {
             startActivityForResult(intent, 100);
         });
 
-        // Initialize firebase auth
-        firebaseAuth = FirebaseAuth.getInstance();
-        // Initialize firebase user
-        firebaseUser = firebaseAuth.getCurrentUser();
-        // Check condition
-        if (firebaseUser != null) {
-            startActivity(new Intent(SignInActivity.this, MainMenu.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-        }
-
-
-        btnTanpaDaftar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SignInActivity.this, MainMenuNonAkun.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -118,7 +112,7 @@ public class SignInActivity extends AppCompatActivity {
                                 // Check condition
                                 if (task.isSuccessful()) {
                                     // When task is successful redirect to profile activity display Toast
-                                    startActivity(new Intent(SignInActivity.this, MainMenu.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                    startActivity(new Intent(SignInGameActivity.this, MenuGameActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                     firebaseAuth = FirebaseAuth.getInstance();
                                     firebaseUser = firebaseAuth.getCurrentUser();
                                     assert firebaseUser != null;
@@ -144,9 +138,9 @@ public class SignInActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent intent;
+        intent = new Intent(SignInGameActivity.this, MainMenuNonAkun.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
@@ -161,7 +155,7 @@ public class SignInActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(SignInActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignInGameActivity.this,error.toString(),Toast.LENGTH_LONG).show();
                     }
                 }){
             @Override

@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
@@ -47,7 +49,12 @@ public class SelectionMenu extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         kategoriPlanet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,21 +128,21 @@ public class SelectionMenu extends AppCompatActivity {
         cardBulan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonAction("Bulan");
+                buttonObjek3D("Bulan");
             }
         });
 
         cardSatelit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonAction("Satelit");
+                buttonObjek3D("Satelit");
             }
         });
 
         cardMatahari.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonAction("Matahari");
+                buttonObjek3D("Matahari");
             }
         });
 
@@ -143,61 +150,61 @@ public class SelectionMenu extends AppCompatActivity {
         cardMerkurius.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonAction("Merkurius");
+                buttonObjek3D("Merkurius");
             }
         });
 
         cardVenus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               buttonAction("Venus");
+               buttonObjek3D("Venus");
             }
         });
 
         cardBumi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              buttonAction("Bumi");
+              buttonObjek3D("Bumi");
             }
         });
 
         cardMars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonAction("Mars");
+                buttonObjek3D("Mars");
             }
         });
 
         cardJupiter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonAction("Jupiter");
+                buttonObjek3D("Jupiter");
             }
         });
 
         cardSaturnus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonAction("Saturnus");
+                buttonObjek3D("Saturnus");
             }
         });
 
         cardUranus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonAction("Uranus");
+                buttonObjek3D("Uranus");
             }
         });
 
         cardNeptunus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buttonAction("Neptunus");
+                buttonObjek3D("Neptunus");
             }
         });
     }
 
-    private void buttonAction(String value) {
+    private void buttonObjek3D(String value) {
         Intent intent = new Intent(SelectionMenu.this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("id", value);
@@ -214,7 +221,17 @@ public class SelectionMenu extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(SelectionMenu.this, MainMenu.class);
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        // Initialize firebase user
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        // Check condition
+        Intent intent;
+        if (firebaseUser != null) {
+            intent = new Intent(SelectionMenu.this, MainMenu.class);
+        } else {
+            intent = new Intent(SelectionMenu.this, MainMenuNonAkun.class);
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

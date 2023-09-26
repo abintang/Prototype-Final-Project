@@ -25,6 +25,8 @@ import com.bumptech.glide.Glide;
 import com.example.markerlessproject.adapter.ContentMateriAdapter;
 import com.example.markerlessproject.models.ContentMateriModel;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,6 +52,8 @@ public class MenuMateriActivity extends AppCompatActivity {
 
     int idKategori;
 
+    FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +63,14 @@ public class MenuMateriActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
 
         idKategori = getIntent().getExtras().getInt("id");
         urlKategori = "https://tata-surya.skripsijoss.my.id/public/kategori/detail/" + idKategori;
@@ -177,7 +189,6 @@ public class MenuMateriActivity extends AppCompatActivity {
 
                                 contentMateriModel.setId_materi(object.getInt("id"));
                                 contentMateriModel.setNama_materi(object.getString("nama"));
-                                contentMateriModel.setIconMateri(object.getString("id_fakta"));
                                 contentMateriModel.setMini_desc_materi(object.getString("mini_deskripsi"));
                                 contentMateriModel.setIconMateri(object.getString("icon"));
 
@@ -207,4 +218,20 @@ public class MenuMateriActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        firebaseAuth = FirebaseAuth.getInstance();
+        // Initialize firebase user
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        // Check condition
+        Intent intent;
+        if (firebaseUser != null) {
+            intent = new Intent(MenuMateriActivity.this, MainMenu.class);
+        } else {
+            intent = new Intent(MenuMateriActivity.this, MainMenuNonAkun.class);
+        }
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 }

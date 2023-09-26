@@ -15,7 +15,7 @@
         app:lottie_fileName="68794-cute-astronaut-operating-laptop.json"
         app:lottie_loop="true"
         android:layout_marginTop="@dimen/_minus60sdp"
-        android:layout_marginBottom="@dimen/_50sdp"
+        android:layout_marginBottom="@dimen/_100sdp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/signInButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_40sdp"
         android:layout_marginStart="@dimen/_30sdp"
         android:layout_marginEnd="@dimen/_30sdp"
         app:icon="@drawable/img"
@@ -68,5 +68,25 @@
         android:fontFamily="@font/poppinssemi"
         app:iconPadding="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@id/tv_welcome_message"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/tanpaRegisterButton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:text="Gunakan aplikasi tanpa mendaftar"
+        android:textAllCaps="false"
+        android:textAlignment="center"
+        app:iconGravity="textStart"
+        android:textSize="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textColor="@color/white_tx"
+        app:backgroundTint="@color/darkbg2"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/white_tx"
+        android:fontFamily="@font/poppinssemi"
+        app:layout_constraintTop_toBottomOf="@id/signInButton"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

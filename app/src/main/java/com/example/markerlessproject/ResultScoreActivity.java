@@ -48,6 +48,7 @@ public class ResultScoreActivity extends AppCompatActivity {
 
         int score = getIntent().getExtras().getInt("score");
         int totalJawabanBenar = getIntent().getExtras().getInt("jawabanBenar");
+        int detik = getIntent().getExtras().getInt("detik");
 
 
         totalPoint.setText(Integer.toString(score));
@@ -62,7 +63,7 @@ public class ResultScoreActivity extends AppCompatActivity {
             miniDeskripsiPoint.setText("Belajar Lagi Ya !");
         }
 
-        deskripsiPoint.setText("Kamu menjawab "+ totalJawabanBenar + " dari 10 pertanyaan dengan benar");
+        deskripsiPoint.setText("Kamu menjawab "+ totalJawabanBenar + " dari 10 pertanyaan dengan benar dalam waktu " + detik + " detik");
 
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("266247651691-j1pa7rv057iqaf1sj7ldisinf94j0hha.apps.googleusercontent.com")
@@ -87,6 +88,15 @@ public class ResultScoreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        buttonRanking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ResultScoreActivity.this, RankingActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
 
